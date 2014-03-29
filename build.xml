@@ -1,0 +1,87 @@
+<?xml version="1.0" standalone="yes"?>
+<!--
+  Copyright (C) 2005-2006 Radu Bogdan Rusu
+-->
+<project name="javaclient" basedir="." default="all">
+  <description>
+  	Build file for Javaclient v2.0.1
+  </description>
+  
+  <target name="all" depends="init, compile, jar, javadoc"/>
+  
+  <!-- Initialization target -->
+  <target name="init">
+        <tstamp/>
+	<property file="build.properties"/>
+        <mkdir dir="${relative.compiled}"/>
+        <mkdir dir="${relative.jarfiles}"/>
+  </target>
+		  
+  <!-- Compile Java source files -->
+  <target name="compile" description="Compile all Java source files">
+    <javac 	srcdir="${relative.source}"
+    		destdir="${relative.compiled}"
+    		debug="on">
+	        <compilerarg value="-Xlint:unchecked"/>
+    </javac>
+  </target>
+
+  <!-- Create the jarfile -->
+  <target name="jar" depends="compile">
+        <jar	jarfile="${relative.jarfiles}/javaclient.jar"
+                basedir="${relative.compiled}"
+                compress="${options.jarfiles.compress}"
+        />
+  </target>
+
+  <!-- Create the Javadoc documentation -->
+  <target name="javadoc" description="Generates javadoc" depends="compile">
+    <mkdir dir="docs/api" />
+    <javadoc sourcepath="src/"
+             destdir="docs/api" 
+	     windowtitle="Javaclient 2.0.1 API" 
+	     useexternalfile="yes"
+             overview="src/overview.html"
+    >
+    <fileset dir="." includes="src/*.java,src/extra/*.java,
+    				src/structures/actarray/*.java,
+    				src/structures/aio/*.java,
+    				src/structures/audiodsp/*.java,
+    				src/structures/audiomixer/*.java,
+    				src/structures/blinkenlight/*.java,
+    				src/structures/blobfinder/*.java,
+    				src/structures/bumper/*.java,
+    				src/structures/camera/*.java,
+    				src/structures/dio/*.java,
+    				src/structures/fiducial/*.java,
+    				src/structures/gps/*.java,
+    				src/structures/gripper/*.java,
+    				src/structures/ir/*.java,
+    				src/structures/joystick/*.java,
+    				src/structures/laser/*.java,
+    				src/structures/limb/*.java,
+    				src/structures/localize/*.java,
+    				src/structures/log/*.java,
+    				src/structures/map/*.java,
+    				src/structures/mcom/*.java,
+    				src/structures/planner/*.java,
+    				src/structures/player/*.java,
+    				src/structures/position1d/*.java,
+    				src/structures/position2d/*.java,
+    				src/structures/position3d/*.java,
+    				src/structures/power/*.java,
+    				src/structures/ptz/*.java,
+    				src/structures/rfid/*.java,
+    				src/structures/simulation/*.java,
+    				src/structures/sonar/*.java,
+    				src/structures/sound/*.java,
+    				src/structures/speech/*.java,
+    				src/structures/speechrecognition/*.java,
+    				src/structures/waveform/*.java,
+    				src/structures/wifi/*.java,
+    				src/xdr/*.java,
+    				src/structures/*.java" />
+    </javadoc>
+  </target>
+</project>
+

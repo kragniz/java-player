@@ -1,0 +1,23 @@
+Javaclient2 for Player/Stage 2.x
+---------------------------------
+Javaclient2 has been redeveloped to work with the new Player/Stage 2.x API. 
+The client is released under the GNU General Public License (GPL) with the 
+mention that portions of it (the javaclient2.xdr.* package) has been borrowed 
+from the Remote Tea package, released under LGPL by Harald Albrecht.
+The Javaclient homepage is:
+
+  http://java-player.sourceforge.net
+
+
+Installation
+------------
+Download and install Player and/or Stage/Gazebo from 
+http://playerstage.sourceforge.net, then compile the sources from the 
+Javaclient2 package either using ANT or manually. Note that Javaclient2 has 
+been developed and tested using Sun's JDK 1.5. 
+
+In case you run into any troubles, don't hesitate to send a message with 
+a description of the problem to our mailing list at 
+java-player-users@lists.sf.net.
+
+Radu Bogdan Rusu, 28.02.2006.

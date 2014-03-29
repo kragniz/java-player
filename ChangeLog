@@ -1,0 +1,27 @@
+2006-03-11 10:22 veedee
+
+	* PULL mode + AddReplaceRule finally works fine. Example on how to use
+	it:
+	<PlayerClient>.requestDataDeliveryMode 
+	    (PlayerConstants.PLAYER_DATAMODE_PULL);
+	<PlayerClient>.readAll ();
+	<PlayerClient>.requestAddReplaceRule 
+	    (-1, -1, PlayerConstants.PLAYER_MSGTYPE_DATA, -1, 1);
+	<PlayerClient>.readAll (); 
+	
+	* Changed Position1dInterface to match Brian's refactorization.
+	
+	* All reads are blocking now (read -> readFully) so at least the 
+	client gets THE data (get/setTimeout disabled for now).
+
+	* Several bugs fixed, including <Position>.setSpeed 
+	(thanks to Hugo Marques), <Sonar>.read (the last value of the
+	sonar values array wasn't being read), and <PlayerClient>.readAll 
+	(sometimes in.available () doesn't return anything - delay between 
+	Player sending data and the client receiving it => get/setTimeout)
+	
+
+2006-02-28 10:00 veedee
+
+	* Javaclient2 2.0 released
+
